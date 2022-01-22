@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles/Compare.css') }}"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Quicksand"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins"
+      rel="stylesheet"
+    />
+    <title>Compare Page</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-2 navBarBg">
+          <ul class="nav flex-column navInside">
+            <div class="logoContainer d-flex justify-content-center">
+              <img
+                src="{{url_for('static', filename='RM.png')}}"
+                class="logoClass"
+                alt=""
+              />
+            </div>
+
+            <li class="nav-item itemNav">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-columns-gap svgItem"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill="#FFFFFF"
+                  d="M6 1v3H1V1h5zM1 0a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1H1zm14 12v3h-5v-3h5zm-5-1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-5zM6 8v7H1V8h5zM1 7a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1H1zm14-6v7h-5V1h5zm-5-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1h-5z"
+                />
+              </svg>
+              <a href="" class="btn navText">Dashboard</a>
+            </li>
+            <li class="nav-item itemNavDash">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-arrow-left-right svgItem"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5zm14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5z"
+                />
+              </svg>
+              <a href="" class="btn">Compare</a>
+            </li>
+            <li class="nav-item itemNav">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-info-square svgItem"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill="#FFFFFF"
+                  d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"
+                />
+                <path
+                  fill="#FFFFFF"
+                  d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"
+                />
+              </svg>
+              <a href="" class="btn navText">About</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-10">
+          <h3 class="pageTitle">Compare products</h3>
+          <br />
+          <div class="row">
+            <div class="col-8">
+              <div class="row">
+                <div class="col-4">{{ogName[0]}} {{ogRating[0]}}</div>
+                <div class="col-4">{{cName[0]}} {{cRating[0]}}</div>
+              </div>
+              <br />
+              <div class="row">
+                <div class="col-4">
+                  <div
+                    class="bgOgProdOG d-flex justify-content-center vertical-center"
+                  >
+                    <img src="{{ogImg[0]}}" class="imgClassOg" alt="..." />
+                  </div>
+                </div>
+
+                <div class="col-4">
+                  <div
+                    class="bgOgProdCp d-flex justify-content-center vertical-center"
+                  >
+                    <img src="{{cImg[0]}}" class="imgClassOg" alt="..." />
+                  </div>
+                </div>
+              </div>
+
+              <br />
+              <div class="row">
+                <div class="col-12">
+                  <div class="row">
+                    <div class="col-12">
+                      <h6>Behavorial Aspects</h6>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="cardBg d-flex">
+                        <div class="row align-items-end">
+                          <div class="aspectWord">Aspects</div>
+                          <div class="vl"></div>
+                          {% for item in ogCommonWords %}
+                          <div class="col-1 barOne">
+                            {{item[1]}}
+                            <div
+                              style="
+                                height: {{item[1]}}px;
+                                width: 20px;
+                                background-color: #e852f5;
+                                border-top-left-radius: 16px;
+                                border-top-right-radius: 16px;
+                              "
+                            ></div>
+                            <hr />
+                            <span class="textOne"> {{item[0]}} </span>
+                          </div>
+
+                          {% endfor %} {% for item in cCommonWords %}
+                          <div class="col-1 barOne">
+                            {{item[1]}}
+                            <div
+                              style="
+                                height: {{item[1]}}px;
+                                width: 20px;
+                                background-color: #52b1f5;
+                                border-top-left-radius: 16px;
+                                border-top-right-radius: 16px;
+                                height: {{item[1]}}px;
+                                
+                              "
+                            ></div>
+                            <hr />
+                            <span class="textOne"> {{item[0]}} </span>
+                          </div>
+                          {% endfor %}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- <div class="row">
+                <h6>Customer Satisfaction</h6>
+                <div class="col-4">
+                  <p>1 star : {{ogStarPer[0]}} % || {{cStarPer[0]}} %</p>
+                  <p>2 star : {{ogStarPer[1]}} % || {{cStarPer[1]}} %</p>
+                  <p>3 star : {{ogStarPer[2]}} % || {{cStarPer[2]}} %</p>
+                  <p>4 star : {{ogStarPer[3]}} % || {{cStarPer[3]}} %</p>
+                  <p>5 star : {{ogStarPer[4]}} % || {{cStarPer[4]}} %</p>
+                </div>
+                <div class="col-5">
+                  <div class="row">
+                    <div class="col-7">
+                      <h6>Behavorial comparison</h6>
+                      <div class="row">
+                        <br />
+                        <div class="col-sm">
+                          <h6>Aspect 1 :</h6>
+                          {% for item in ogCommonWords %}
+                          <p>{{item[0]}}</p>
+                          {% endfor %}
+                        </div>
+                        <div class="col-sm">
+                          <h6>Aspect 2 :</h6>
+                          {% for item in cCommonWords %}
+                          <p>{{item[0]}}</p>
+                          {% endfor %}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+            </div>
+            <div class="col-3">
+              <div class="row">
+                <div class="col cardTitle">
+                  <h6 style="font-family: Poppins">Analytics</h6>
+                  <p class="text" style="color: gray">Some text here</p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-12">
+                  <div
+                    class="subCol"
+                    style="background: rgba(113, 82, 245, 0.1)"
+                  >
+                    <br />
+                    <div class="row d-flex justify-content-center">
+                      <div
+                        class="subColAnalytics"
+                        style="width: 200px; height: 95px"
+                      >
+                        <div class="row p-2">
+                          <div
+                            class="col-3 vertical-center"
+                            style="margin-left: 10px"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="24"
+                              height="24"
+                              fill="#7152F5"
+                              class="bi bi-messenger"
+                              viewBox="0 0 16 16"
+                            >
+                              <path
+                                d="M0 7.76C0 3.301 3.493 0 8 0s8 3.301 8 7.76-3.493 7.76-8 7.76c-.81 0-1.586-.107-2.316-.307a.639.639 0 0 0-.427.03l-1.588.702a.64.64 0 0 1-.898-.566l-.044-1.423a.639.639 0 0 0-.215-.456C.956 12.108 0 10.092 0 7.76zm5.546-1.459-2.35 3.728c-.225.358.214.761.551.506l2.525-1.916a.48.48 0 0 1 .578-.002l1.869 1.402a1.2 1.2 0 0 0 1.735-.32l2.35-3.728c.226-.358-.214-.761-.551-.506L9.728 7.381a.48.48 0 0 1-.578.002L7.281 5.98a1.2 1.2 0 0 0-1.735.32z"
+                              />
+                            </svg>
+                          </div>
+                          <div class="col-9" style="margin-left: -20px">
+                            <h6 style="font-family: Poppins; font-size: 13px">
+                              New Sales
+                            </h6>
+                            <div class="row">
+                              <div class="col-6 align-item-start">
+                                <h4
+                                  style="
+                                    font-family: Quicksand;
+                                    color: #7152f5;
+                                    font-weight: 900;
+                                  "
+                                >
+                                  23
+                                </h4>
+                              </div>
+                              <div class="col-6 d-flex align-items-end p-0">
+                                <h4
+                                  style="
+                                    font-family: Quicksand;
+                                    color: #7152f5;
+                                    font-weight: 900;
+                                  "
+                                >
+                                  57
+                                </h4>
+                              </div>
+                            </div>
+
+                            <div class="row">
+                              <div
+                                class="col-6 anlyBlc"
+                                style="
+                                  background-color: #7152f5;
+                                  height: 15px;
+                                  border-radius: 16px;
+                                  margin-left: 10px;
+                                "
+                              >
+                                <h6
+                                  style="
+                                    font-family: Poppins;
+                                    font-size: 12px;
+                                    color: white;
+                                  "
+                                >
+                                  5 %
+                                </h6>
+                              </div>
+                              <div
+                                class="col-6 anlyBlc1"
+                                style="
+                                  background-color: #f55275;
+                                  height: 15px;
+                                  border-radius: 16px;
+                                  margin-left: -20px;
+                                "
+                              >
+                                <h6
+                                  style="
+                                    font-family: Poppins;
+                                    font-size: 12px;
+                                    color: white;
+                                  "
+                                >
+                                  15 %
+                                </h6>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row d-flex justify-content-center">
+                      <div
+                        class="subColAnalytics"
+                        style="width: 200px; height: 95px"
+                      >
+                        <div class="row p-2">
+                          <div
+                            class="col-3 vertical-center"
+                            style="margin-left: 10px"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="24"
+                              height="24"
+                              fill="#7152F5"
+                              class="bi bi-messenger"
+                              viewBox="0 0 16 16"
+                            >
+                              <path
+                                d="M0 7.76C0 3.301 3.493 0 8 0s8 3.301 8 7.76-3.493 7.76-8 7.76c-.81 0-1.586-.107-2.316-.307a.639.639 0 0 0-.427.03l-1.588.702a.64.64 0 0 1-.898-.566l-.044-1.423a.639.639 0 0 0-.215-.456C.956 12.108 0 10.092 0 7.76zm5.546-1.459-2.35 3.728c-.225.358.214.761.551.506l2.525-1.916a.48.48 0 0 1 .578-.002l1.869 1.402a1.2 1.2 0 0 0 1.735-.32l2.35-3.728c.226-.358-.214-.761-.551-.506L9.728 7.381a.48.48 0 0 1-.578.002L7.281 5.98a1.2 1.2 0 0 0-1.735.32z"
+                              />
+                            </svg>
+                          </div>
+                          <div class="col-9" style="margin-left: -20px">
+                            <h6 style="font-family: Poppins; font-size: 13px">
+                              New Sales
+                            </h6>
+                            <div class="row">
+                              <div class="col-6 align-item-start">
+                                <h4
+                                  style="
+                                    font-family: Quicksand;
+                                    color: #7152f5;
+                                    font-weight: 900;
+                                  "
+                                >
+                                  23
+                                </h4>
+                              </div>
+                              <div class="col-6 d-flex align-items-end p-0">
+                                <h4
+                                  style="
+                                    font-family: Quicksand;
+                                    color: #7152f5;
+                                    font-weight: 900;
+                                  "
+                                >
+                                  57
+                                </h4>
+                              </div>
+                            </div>
+
+                            <div class="row">
+                              <div
+                                class="col-6 anlyBlc"
+                                style="
+                                  background-color: #7152f5;
+                                  height: 15px;
+                                  border-radius: 16px;
+                                  margin-left: 10px;
+                                "
+                              >
+                                <h6
+                                  style="
+                                    font-family: Poppins;
+                                    font-size: 12px;
+                                    color: white;
+                                  "
+                                >
+                                  5 %
+                                </h6>
+                              </div>
+                              <div
+                                class="col-6 anlyBlc1"
+                                style="
+                                  background-color: #f55275;
+                                  height: 15px;
+                                  border-radius: 16px;
+                                  margin-left: -20px;
+                                "
+                              >
+                                <h6
+                                  style="
+                                    font-family: Poppins;
+                                    font-size: 12px;
+                                    color: white;
+                                  "
+                                >
+                                  15 %
+                                </h6>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row d-flex justify-content-center">
+                      <div
+                        class="subColAnalytics"
+                        style="width: 200px; height: 95px"
+                      >
+                        <div class="row p-2">
+                          <div
+                            class="col-3 vertical-center"
+                            style="margin-left: 10px"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="24"
+                              height="24"
+                              fill="#7152F5"
+                              class="bi bi-messenger"
+                              viewBox="0 0 16 16"
+                            >
+                              <path
+                                d="M0 7.76C0 3.301 3.493 0 8 0s8 3.301 8 7.76-3.493 7.76-8 7.76c-.81 0-1.586-.107-2.316-.307a.639.639 0 0 0-.427.03l-1.588.702a.64.64 0 0 1-.898-.566l-.044-1.423a.639.639 0 0 0-.215-.456C.956 12.108 0 10.092 0 7.76zm5.546-1.459-2.35 3.728c-.225.358.214.761.551.506l2.525-1.916a.48.48 0 0 1 .578-.002l1.869 1.402a1.2 1.2 0 0 0 1.735-.32l2.35-3.728c.226-.358-.214-.761-.551-.506L9.728 7.381a.48.48 0 0 1-.578.002L7.281 5.98a1.2 1.2 0 0 0-1.735.32z"
+                              />
+                            </svg>
+                          </div>
+                          <div class="col-9" style="margin-left: -20px">
+                            <h6 style="font-family: Poppins; font-size: 13px">
+                              New Sales
+                            </h6>
+                            <div class="row">
+                              <div class="col-6 align-item-start">
+                                <h4
+                                  style="
+                                    font-family: Quicksand;
+                                    color: #7152f5;
+                                    font-weight: 900;
+                                  "
+                                >
+                                  23
+                                </h4>
+                              </div>
+                              <div class="col-6 d-flex align-items-end p-0">
+                                <h4
+                                  style="
+                                    font-family: Quicksand;
+                                    color: #7152f5;
+                                    font-weight: 900;
+                                  "
+                                >
+                                  57
+                                </h4>
+                              </div>
+                            </div>
+
+                            <div class="row">
+                              <div
+                                class="col-6 anlyBlc"
+                                style="
+                                  background-color: #7152f5;
+                                  height: 15px;
+                                  border-radius: 16px;
+                                  margin-left: 10px;
+                                "
+                              >
+                                <h6
+                                  style="
+                                    font-family: Poppins;
+                                    font-size: 12px;
+                                    color: white;
+                                  "
+                                >
+                                  5 %
+                                </h6>
+                              </div>
+                              <div
+                                class="col-6 anlyBlc1"
+                                style="
+                                  background-color: #f55275;
+                                  height: 15px;
+                                  border-radius: 16px;
+                                  margin-left: -20px;
+                                "
+                              >
+                                <h6
+                                  style="
+                                    font-family: Poppins;
+                                    font-size: 12px;
+                                    color: white;
+                                  "
+                                >
+                                  15 %
+                                </h6>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row d-flex justify-content-center">
+                      <div
+                        class="subColAnalytics"
+                        style="width: 200px; height: 95px"
+                      >
+                        <div class="row p-2">
+                          <div
+                            class="col-3 vertical-center"
+                            style="margin-left: 10px"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="24"
+                              height="24"
+                              fill="#7152F5"
+                              class="bi bi-messenger"
+                              viewBox="0 0 16 16"
+                            >
+                              <path
+                                d="M0 7.76C0 3.301 3.493 0 8 0s8 3.301 8 7.76-3.493 7.76-8 7.76c-.81 0-1.586-.107-2.316-.307a.639.639 0 0 0-.427.03l-1.588.702a.64.64 0 0 1-.898-.566l-.044-1.423a.639.639 0 0 0-.215-.456C.956 12.108 0 10.092 0 7.76zm5.546-1.459-2.35 3.728c-.225.358.214.761.551.506l2.525-1.916a.48.48 0 0 1 .578-.002l1.869 1.402a1.2 1.2 0 0 0 1.735-.32l2.35-3.728c.226-.358-.214-.761-.551-.506L9.728 7.381a.48.48 0 0 1-.578.002L7.281 5.98a1.2 1.2 0 0 0-1.735.32z"
+                              />
+                            </svg>
+                          </div>
+                          <div class="col-9" style="margin-left: -20px">
+                            <h6 style="font-family: Poppins; font-size: 13px">
+                              New Sales
+                            </h6>
+                            <div class="row">
+                              <div class="col-6 align-item-start">
+                                <h4
+                                  style="
+                                    font-family: Quicksand;
+                                    color: #7152f5;
+                                    font-weight: 900;
+                                  "
+                                >
+                                  23
+                                </h4>
+                              </div>
+                              <div class="col-6 d-flex align-items-end p-0">
+                                <h4
+                                  style="
+                                    font-family: Quicksand;
+                                    color: #7152f5;
+                                    font-weight: 900;
+                                  "
+                                >
+                                  57
+                                </h4>
+                              </div>
+                            </div>
+
+                            <div class="row">
+                              <div
+                                class="col-6 anlyBlc"
+                                style="
+                                  background-color: #7152f5;
+                                  height: 15px;
+                                  border-radius: 16px;
+                                  margin-left: 10px;
+                                "
+                              >
+                                <h6
+                                  style="
+                                    font-family: Poppins;
+                                    font-size: 12px;
+                                    color: white;
+                                  "
+                                >
+                                  5 %
+                                </h6>
+                              </div>
+                              <div
+                                class="col-6 anlyBlc1"
+                                style="
+                                  background-color: #f55275;
+                                  height: 15px;
+                                  border-radius: 16px;
+                                  margin-left: -20px;
+                                "
+                              >
+                                <h6
+                                  style="
+                                    font-family: Poppins;
+                                    font-size: 12px;
+                                    color: white;
+                                  "
+                                >
+                                  15 %
+                                </h6>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <br />
+          <br />
+        </div>
+      </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
