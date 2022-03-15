@@ -1,8 +1,9 @@
-from flask import Flask, render_template
-from LandingPage import neutralRatings, lowRatings, highRatings, productCSV
-from Dashboard import fetchStarPercentage, fetchCommonWords, fetchEmotionPer
-from Recommendation import get_recommendations
 import pandas as pd
+from flask import Flask, render_template
+
+from Dashboard import fetchCommonWords, fetchEmotionPer, fetchStarPercentage
+from LandingPage import highRatings, lowRatings, neutralRatings, productCSV
+from Recommendation import get_recommendations
 
 app = Flask(__name__)
 
